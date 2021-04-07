@@ -176,6 +176,7 @@ export function generateRandomCode(language, lines) {
         lastLine
       );
     case "js":
+      const spacing = '    ';
       const firstLines = [
         (randomFunctionName) => {
           return `function ${randomFunctionName}() {${addNewLine()}`;
@@ -200,8 +201,8 @@ export function generateRandomCode(language, lines) {
       // if line length > 7
       if (includeForLoop) {
         // add 2 lines
-        fillerLines.push(`    ${JavaScript.getRandomFillerLine()}`);
-        fillerLines.push(`    ${JavaScript.getRandomFillerLine()}`);
+        fillerLines.push(`${spacing}${JavaScript.getRandomFillerLine()}`);
+        fillerLines.push(`${spacing}${JavaScript.getRandomFillerLine()}`);
 
         // add 3 lines
         const forLoopLines = JavaScript.getRandomForLoopAsArray(); // return array
@@ -210,11 +211,11 @@ export function generateRandomCode(language, lines) {
 
         // add the rest
         for (let i = 6; i <= fillerLineQty; i++) {
-          fillerLines.push(`    ${JavaScript.getRandomFillerLine()}`);
+          fillerLines.push(`${spacing}${JavaScript.getRandomFillerLine()}`);
         }
       } else {
         for (let i = 1; i <= fillerLineQty; i++) {
-          fillerLines.push(`    ${JavaScript.getRandomFillerLine()}`);
+          fillerLines.push(`${spacing}${JavaScript.getRandomFillerLine()}`);
         }
       }
 
@@ -222,7 +223,7 @@ export function generateRandomCode(language, lines) {
 
       lastLine = `${addNewLine()}}`;
 
-      return firstLine + JavaScript.dedupe(fillerLines, '    ', JavaScript.getRandomFillerLine).join(addNewLine()) + lastLine;
+      return firstLine + JavaScript.dedupe(fillerLines, spacing, JavaScript.getRandomFillerLine).join(addNewLine()) + lastLine;
     case "php":
       firstLine = `<?php ${addNewLine(2)}`;
       let namespaceLine = `${PHP.getRandomNamespace()}${addNewLine(2)}`;

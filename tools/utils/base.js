@@ -5,7 +5,6 @@ export default class Base {
       if(randomFillerLine.trim().split('=').length > 1) {
         const varCheck = randomFillerLine.trim().split('=')[0].split(' ')[1];
         if(checkedLines.indexOf(varCheck) >= 0) {
-            console.log(varCheck);
             return `${spacing}${refillFunction()}`;
         }
         checkedLines.push(varCheck);
