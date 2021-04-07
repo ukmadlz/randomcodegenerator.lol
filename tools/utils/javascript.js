@@ -6,8 +6,9 @@ import {
   getRandomLogLine,
   getRandomSingleCharacter,
 } from "./helpers";
+import Base from './base';
 
-export default class JavaScript {
+export default class JavaScript extends Base {
   static getRandomInitializationVars() {
     return [
       "[]",

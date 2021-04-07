@@ -222,7 +222,7 @@ export function generateRandomCode(language, lines) {
 
       lastLine = `${addNewLine()}}`;
 
-      return firstLine + fillerLines.join(addNewLine()) + lastLine;
+      return firstLine + JavaScript.dedupe(fillerLines, '    ', JavaScript.getRandomFillerLine).join(addNewLine()) + lastLine;
     case "php":
       firstLine = `<?php ${addNewLine(2)}`;
       let namespaceLine = `${PHP.getRandomNamespace()}${addNewLine(2)}`;
@@ -251,7 +251,7 @@ export function generateRandomCode(language, lines) {
         namespaceLine +
         classLine +
         functionLine +
-        fillerLines.join(addNewLine()) +
+        PHP.dedupe(fillerLines, '        ', PHP.getRandomFillerLine).join(addNewLine()) +
         endFunctionLine +
         lastLine
       );

@@ -6,8 +6,9 @@ import {
   getRandomVerbCapitalized,
   getRandomLogLine,
 } from "./helpers";
+import Base from './base';
 
-export default class PHP {
+export default class PHP extends Base {
   static getRandomNamespace() {
     return `namespace ${getRandomNounCapitalized()}\\${getRandomNounCapitalized()};`;
   }
